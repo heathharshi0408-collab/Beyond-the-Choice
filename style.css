@@ -1,0 +1,912 @@
+/* ========================================
+   GENERAL
+======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dff3ff,
+            #eef9df
+        );
+
+    min-height: 100vh;
+
+    text-align: center;
+
+    color: #263238;
+
+}
+
+
+#game {
+
+    width: 92%;
+
+    max-width: 1000px;
+
+    min-height: 600px;
+
+    margin: 25px auto;
+
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.15);
+
+}
+
+
+/* ========================================
+   TITLE
+======================================== */
+
+.titleScreen {
+
+    padding-top: 100px;
+
+}
+
+
+.titleIcon {
+
+    font-size: 70px;
+
+}
+
+
+h1 {
+
+    font-size: 40px;
+
+    margin: 10px 0;
+
+}
+
+
+h2 {
+
+    margin-top: 10px;
+
+}
+
+
+p {
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+}
+
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+button {
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 13px 22px;
+
+    margin: 8px;
+
+    background: #34495e;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+
+button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 12px rgba(0,0,0,0.2);
+
+}
+
+
+/* ========================================
+   NAME INPUT
+======================================== */
+
+.nameBox {
+
+    margin: 30px auto;
+
+}
+
+
+.nameBox input {
+
+    width: 280px;
+
+    padding: 14px;
+
+    border: 2px solid #ddd;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    text-align: center;
+
+}
+
+
+.nameBox input:focus {
+
+    outline: none;
+
+    border-color: #6c8cff;
+
+}
+
+
+/* ========================================
+   CHARACTER SELECTION
+======================================== */
+
+.characters {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 35px;
+
+    margin-top: 30px;
+
+}
+
+
+.characterChoice {
+
+    width: 210px;
+
+    min-height: 230px;
+
+    background: #f6f8fa;
+
+    border: 2px solid #e1e5e8;
+
+    color: #263238;
+
+}
+
+
+.characterChoice:hover {
+
+    border-color: #8797ff;
+
+    background: #f0f3ff;
+
+}
+
+
+.characterChoice .character {
+
+    margin: auto;
+
+}
+
+
+/* ========================================
+   CHARACTER
+======================================== */
+
+.character {
+
+    position: relative;
+
+    width: 70px;
+
+    height: 135px;
+
+    margin: 0 auto;
+
+}
+
+
+/* ========================================
+   HAIR
+======================================== */
+
+.hair {
+
+    position: absolute;
+
+    background: #33251f;
+
+    z-index: 5;
+
+}
+
+
+/* Woman */
+
+.girlHair {
+
+    width: 56px;
+
+    height: 63px;
+
+    left: 7px;
+
+    top: 1px;
+
+    border-radius: 50% 50% 38% 38%;
+
+}
+
+
+/* Boy */
+
+.boyHair {
+
+    width: 48px;
+
+    height: 27px;
+
+    left: 11px;
+
+    top: 3px;
+
+    border-radius: 50% 50% 25% 25%;
+
+}
+
+
+/* ========================================
+   FACE
+======================================== */
+
+.head {
+
+    position: absolute;
+
+    width: 43px;
+
+    height: 47px;
+
+    left: 13px;
+
+    top: 10px;
+
+    background: #f2c29b;
+
+    border-radius: 48%;
+
+    z-index: 6;
+
+}
+
+
+/* Cover only the front portion of hair */
+
+.girlHair {
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            100% 100%,
+            87% 100%,
+            87% 30%,
+            13% 30%,
+            13% 100%,
+            0 100%
+        );
+
+}
+
+
+/* ========================================
+   FACE DETAILS
+======================================== */
+
+.eye {
+
+    position: absolute;
+
+    width: 5px;
+
+    height: 6px;
+
+    background: #222;
+
+    border-radius: 50%;
+
+    top: 18px;
+
+}
+
+
+.leftEye {
+
+    left: 10px;
+
+}
+
+
+.rightEye {
+
+    right: 10px;
+
+}
+
+
+.mouth {
+
+    position: absolute;
+
+    width: 11px;
+
+    height: 6px;
+
+    left: 16px;
+
+    top: 31px;
+
+    border-bottom: 2px solid #8b4a4a;
+
+    border-radius: 50%;
+
+}
+
+
+/* ========================================
+   NECK
+======================================== */
+
+.neck {
+
+    position: absolute;
+
+    width: 13px;
+
+    height: 10px;
+
+    left: 29px;
+
+    top: 51px;
+
+    background: #f2c29b;
+
+    z-index: 3;
+
+}
+
+
+/* ========================================
+   BODY / CLOTHING
+======================================== */
+
+.body {
+
+    position: absolute;
+
+    width: 44px;
+
+    height: 46px;
+
+    left: 13px;
+
+    top: 56px;
+
+    border-radius: 10px 10px 7px 7px;
+
+    z-index: 3;
+
+}
+
+
+/* Woman clothing */
+
+.girlBody {
+
+    background: #d86f88;
+
+}
+
+
+/* Woman lower clothing */
+
+.girlBody::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 49px;
+
+    height: 29px;
+
+    left: -2px;
+
+    top: 39px;
+
+    background: #6c559d;
+
+    border-radius: 5px 5px 13px 13px;
+
+}
+
+
+/* Boy clothing */
+
+.boyBody {
+
+    background: #4b80b5;
+
+}
+
+
+/* ========================================
+   ARMS
+======================================== */
+
+.arm {
+
+    position: absolute;
+
+    width: 10px;
+
+    height: 38px;
+
+    top: 59px;
+
+    background: #f2c29b;
+
+    border-radius: 8px;
+
+    z-index: 2;
+
+}
+
+
+.leftArm {
+
+    left: 5px;
+
+    transform: rotate(7deg);
+
+}
+
+
+.rightArm {
+
+    right: 5px;
+
+    transform: rotate(-7deg);
+
+}
+
+
+/* ========================================
+   LEGS
+======================================== */
+
+.leg {
+
+    position: absolute;
+
+    width: 13px;
+
+    height: 32px;
+
+    top: 99px;
+
+    border-radius: 5px;
+
+    z-index: 2;
+
+}
+
+
+.girl .leg {
+
+    background: #f2c29b;
+
+}
+
+
+.boy .leg {
+
+    background: #35445f;
+
+}
+
+
+.leftLeg {
+
+    left: 20px;
+
+}
+
+
+.rightLeg {
+
+    right: 20px;
+
+}
+
+
+/* ========================================
+   SHOES
+======================================== */
+
+.shoe {
+
+    position: absolute;
+
+    width: 19px;
+
+    height: 9px;
+
+    top: 123px;
+
+    background: #292929;
+
+    border-radius: 8px;
+
+}
+
+
+.leftShoe {
+
+    left: 15px;
+
+}
+
+
+.rightShoe {
+
+    right: 15px;
+
+}
+
+
+/* ========================================
+   CHARACTER PREVIEW
+======================================== */
+
+.characterPreview {
+
+    height: 155px;
+
+    margin: 20px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+}
+
+
+/* ========================================
+   SANDBOX MAP
+======================================== */
+
+#map {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 470px;
+
+    margin: 25px auto;
+
+    overflow: hidden;
+
+    border: 5px solid #596b55;
+
+    border-radius: 18px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent 48%,
+            #d8c79e 48%,
+            #d8c79e 52%,
+            transparent 52%
+        ),
+
+        linear-gradient(
+            0deg,
+            transparent 48%,
+            #d8c79e 48%,
+            #d8c79e 52%,
+            transparent 52%
+        ),
+
+        #a9d68f;
+
+}
+
+
+/* ========================================
+   MAP DETAILS
+======================================== */
+
+.mapDecoration {
+
+    position: absolute;
+
+    font-size: 28px;
+
+    opacity: 0.8;
+
+    pointer-events: none;
+
+}
+
+
+.tree1 {
+
+    left: 32%;
+
+    top: 10%;
+
+}
+
+
+.tree2 {
+
+    left: 82%;
+
+    top: 45%;
+
+}
+
+
+.tree3 {
+
+    left: 27%;
+
+    bottom: 8%;
+
+}
+
+
+.flower1 {
+
+    left: 50%;
+
+    top: 12%;
+
+}
+
+
+.flower2 {
+
+    left: 12%;
+
+    top: 47%;
+
+}
+
+
+/* ========================================
+   LOCATIONS
+======================================== */
+
+.mapLocation {
+
+    position: absolute;
+
+    width: 105px;
+
+    height: 75px;
+
+    padding: 6px;
+
+    margin: 0;
+
+    background: rgba(255,255,255,0.94);
+
+    color: #263238;
+
+    border: 2px solid #56615a;
+
+    border-radius: 14px;
+
+    font-size: 28px;
+
+    z-index: 4;
+
+}
+
+
+.mapLocation span {
+
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+}
+
+
+/* Positions */
+
+.home {
+
+    left: 5%;
+
+    top: 8%;
+
+}
+
+
+.school {
+
+    right: 5%;
+
+    top: 8%;
+
+}
+
+
+.market {
+
+    left: 5%;
+
+    bottom: 8%;
+
+}
+
+
+.hospital {
+
+    right: 5%;
+
+    bottom: 8%;
+
+}
+
+
+.park {
+
+    left: 43%;
+
+    top: 42%;
+
+}
+
+
+/* ========================================
+   PLAYER
+======================================== */
+
+#player {
+
+    position: absolute;
+
+    width: 70px;
+
+    height: 135px;
+
+    left: 13%;
+
+    top: 28%;
+
+    z-index: 10;
+
+    transition:
+        left 0.9s ease,
+        top 0.9s ease;
+
+    pointer-events: none;
+
+}
+
+
+#player .character {
+
+    margin: 0;
+
+}
+
+
+/* ========================================
+   MAP MESSAGE
+======================================== */
+
+#mapMessage {
+
+    min-height: 35px;
+
+    font-size: 17px;
+
+}
+
+
+/* ========================================
+   STORY
+======================================== */
+
+.storyBox {
+
+    max-width: 700px;
+
+    margin: 30px auto;
+
+    padding: 25px;
+
+    background: #f7f9fb;
+
+    border-radius: 16px;
+
+}
+
+
+.storyBox p {
+
+    font-size: 18px;
+
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 650px) {
+
+    #game {
+
+        width: 96%;
+
+        padding: 18px;
+
+    }
+
+    .characters {
+
+        gap: 10px;
+
+    }
+
+    .characterChoice {
+
+        width: 160px;
+
+    }
+
+    #map {
+
+        height: 400px;
+
+    }
+
+}
